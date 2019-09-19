@@ -21,6 +21,10 @@ public class LockFactory {
         switch (lockInfo.getType()) {
             case Reentrant:
                 return new ReentrantLock(zkClient, lockInfo);
+            case Read:
+                return new ReadLock(zkClient,lockInfo);
+            case Write:
+                return new WriteLock(zkClient,lockInfo);
             default:
                 return new ReentrantLock(zkClient, lockInfo);
         }
